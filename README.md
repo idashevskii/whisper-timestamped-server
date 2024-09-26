@@ -14,9 +14,7 @@ Open in browser:
 - [API Docs](http://localhost:9001/docs)
 
 
-### OPTIONAL: Install dependecies on host
-
-In folders `./backend` and `./frontend` run:
+### OPTIONAL: Install dependecies on host (for dev only)
 
 ```bash
 python -m venv .venv
