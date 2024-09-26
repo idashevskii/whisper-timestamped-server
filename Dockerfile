@@ -1,9 +1,9 @@
-FROM python:3.12.3
+FROM nvidia/cuda:12.2.2-runtime-ubuntu22.04
 
 WORKDIR /app
 
 RUN apt -y update && \
-  apt install -y --no-install-recommends ffmpeg && \
+  apt install -y --no-install-recommends ffmpeg python3-pip python3-dev python-is-python3 && \
   rm -rf /var/cache/apt/archives /var/lib/apt/lists/*
 
 COPY ./requirements.txt ./requirements.txt
