@@ -33,9 +33,12 @@ def do_transcribe(body: TranscribeInput) -> List[Word]:
         try:
             decoded_audio = base64.b64decode(body.audio)
         except:
-            raise HTTPException(400, "Failed to decode audio as base64")
+            raise HTTPException(400, "Failed to decode base64")
         tmp.write(decoded_audio)
-        audio = whisper.load_audio(tmp.name)
+        try:
+            audio = whisper.load_audio(tmp.name)
+        except:
+            raise HTTPException(400, "Failed to decode audio")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = whisper.load_model("tiny", device=device)
