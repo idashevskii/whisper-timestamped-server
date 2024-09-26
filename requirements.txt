@@ -1,3 +1,5 @@
 whisper-timestamped==1.15.4
 uvicorn==0.30.6
 fastapi==0.114.2
+torchaudio==2.4.1
+onnxruntime==1.19.2

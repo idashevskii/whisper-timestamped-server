@@ -1,6 +1,6 @@
 services:
 
-  backend:
+  server:
     build:
       dockerfile: Dockerfile.dev
     volumes:

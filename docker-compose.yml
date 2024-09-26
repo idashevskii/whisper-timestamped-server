@@ -7,7 +7,8 @@ services:
     ports:
       - 9001:3000
     volumes:
-      - ./models:/root/.cache/whisper/
+      - ./models/whisper:/root/.cache/whisper/
+      - ./models/torch:/root/.cache/torch/
     logging:
       options:
         max-size: "256k"
