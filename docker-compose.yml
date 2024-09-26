@@ -1,0 +1,15 @@
+services:
+  server:
+    build:
+      context: ./
+      network: host
+    restart: always
+    ports:
+      - 9000:9000
+    volumes:
+      - ./models:/root/.cache/whisper/
+    logging:
+      options:
+        max-size: "256k"
+        max-file: "1"
+      driver: json-file
