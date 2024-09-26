@@ -13,4 +13,4 @@ RUN --mount=type=cache,mode=0755,target=/root/.cache \
 
 COPY ./src ./src
 
-CMD ["fastapi", "run", "src/main.py", "--port", "3000"]
+CMD ["python", "-m", "uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "3000"]

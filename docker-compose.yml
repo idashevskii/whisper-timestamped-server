@@ -5,7 +5,7 @@ services:
       network: host
     restart: always
     ports:
-      - 9000:9000
+      - 9001:3000
     volumes:
       - ./models:/root/.cache/whisper/
     logging:
