@@ -1,7 +1,7 @@
 import logging
 import os
 from typing import List
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import whisper_timestamped as whisper
 import torch
 from pydantic import BaseModel
@@ -30,7 +30,11 @@ class TranscribeInput(BaseModel):
 @app.post("/transcribe")
 def do_transcribe(body: TranscribeInput) -> List[Word]:
     with tempfile.NamedTemporaryFile() as tmp:
-        tmp.write(base64.b64decode(body.audio))
+        try:
+            decoded_audio = base64.b64decode(body.audio)
+        except:
+            raise HTTPException(400, "Failed to decode audio as base64")
+        tmp.write(decoded_audio)
         audio = whisper.load_audio(tmp.name)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
