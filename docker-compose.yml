@@ -9,6 +9,8 @@ services:
     volumes:
       - ./models/whisper:/root/.cache/whisper/
       - ./models/torch:/root/.cache/torch/
+    environment:
+      - WHISPER_MODEL=$WHISPER_MODEL
     logging:
       options:
         max-size: "256k"
